@@ -1,18 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import AppProvider from './src/context';
+import { ThemeProvider } from 'styled-components';
+import theme from './src/global/styles/theme';
 
-import { Home } from './src/pages/Home';
-import { Theme } from './src/template/theme';
 
 export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <AppProvider>
-        <Theme>
-          <Home />
-        </Theme>
-      </AppProvider>
+      <ThemeProvider theme={theme}>
+
+      </ThemeProvider>
     </>
   );
 }
