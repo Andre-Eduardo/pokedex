@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
+import { Card } from '../../components/Card';
 import api from '../../services/api';
 
 import {
-  Container
+  Container, Title
 } from './styles';
 
 type PokemonType = {
   type: string
 }
 
-type Pokemon{
+type Pokemon = {
   name: string
   url: string
   id: number
@@ -49,10 +51,20 @@ export function Home() {
       id, types
     }
   }
+  // console.log(pokemons.map(pokemon => pokemon.name))
   return (
     <Container>
+      <FlatList
+        data={pokemons}
+        renderItem={({ item: pokemon }) => (
 
+          <Card data={pokemon} />
+
+        )}
+      // keyExtractor={(pokemon.id) => pokemon.id}
+      />
     </Container>
   )
 }
+
 
