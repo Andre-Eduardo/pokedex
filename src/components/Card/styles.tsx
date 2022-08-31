@@ -61,5 +61,20 @@ text-transform:capitalize ;
       `;
 
 export const RightSide = styled.View`
-flex: 1 ;
+justify-content:center ;
+align-items:center ;
+width:50%;
+position: relative;
+ `;
+
+export const PokemonImage = styled.Image`
+margin-top:-40px ;
+width:130px ;
+height:130px ;
+
+ `;
+
+export const PokeballDetail = styled.Image`
+position:absolute ;
+right: -20px ;
  `;
