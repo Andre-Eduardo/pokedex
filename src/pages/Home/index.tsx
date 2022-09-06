@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { Card, Pokemon, PokemonType } from '../../components/Card';
-import { FadeAnimation } from '../../components/FadeAnimation';
 import api from '../../services/api';
-
+import pokebollHeader from '../../assets/img/pokeball.png'
 import {
-  Container, Title
+  Container, Header, Title
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 
 type RequestPokeInfo = {
@@ -43,17 +43,29 @@ export function Home() {
       id, types
     }
   }
-  // console.log(pokemons.map(pokemon => pokemon.name))
+  const { navigate } = useNavigation()
+  function handleNavigation(pokemonId: Number) {
+    navigate('About', {
+      pokemonId,
+    })
+  }
+
   return (
     <Container>
       <FlatList
+        ListHeaderComponent={
+          <>
+            <Header source={pokebollHeader} />
+            <Title>Pokédex</Title>
+          </>
+        }
+        contentContainerStyle={{
+          paddingHorizontal: 20
+        }}
         data={pokemons}
         renderItem={({ item: pokemon }) => (
-          <FadeAnimation>
-            <Card data={pokemon} />
-          </FadeAnimation>
 
-
+          <Card data={pokemon} onPress={() => handleNavigation(pokemon.id)} />
         )}
         keyExtractor={(index) => index.name}
       />

@@ -5,8 +5,15 @@ import {
   Container, Content, Footer, SubTitle, Title, WrapperAnimation, WrapperImage
 } from './styles';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 export function Welcome() {
+  const { navigate } = useNavigation()
+  function handleNavigation() {
+    navigate('Home')
+  }
   return (
     <Container>
       <Content>
@@ -19,7 +26,7 @@ export function Welcome() {
         <SubTitle>Encontre todos os pokémons em um só lugar</SubTitle>
       </Content>
       <Footer>
-        <Button title='Iniciar' />
+        <Button title='Iniciar' onPress={handleNavigation} />
       </Footer>
     </Container>
   )
