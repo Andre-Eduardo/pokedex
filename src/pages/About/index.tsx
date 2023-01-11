@@ -8,7 +8,7 @@ import { Feather } from '@expo/vector-icons';
 
 import api from '../../services/api';
 import circle from '../../assets/img/circle.png';
-
+import dots from './img/dots.png';
 
 import * as S from './styles';
 import { useTheme } from 'styled-components/native';
@@ -114,8 +114,15 @@ export function About() {
 
         <S.ContentImage>
           <S.CircleImage source={circle} />
-
+          {/* <CardAnimation> */}
+            <S.PokemonImage
+              source={{
+                uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`,
+              }}
+            />
+          {/* </CardAnimation> */}
         </S.ContentImage>
+
 
         <S.Content>
           <S.PokemonId>#{pokemon.id}</S.PokemonId>
@@ -129,7 +136,7 @@ export function About() {
           </S.PokemonTypeContainer>
         </S.Content>
 
-        {/* <S.DotsImage source={dots} /> */}
+        <S.DotsImage source={dots} />
       </S.Header>
 
       <S.Container>
